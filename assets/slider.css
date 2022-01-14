@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper{
+  width: 100%;
+}
+.wrapper h1{
+  margin: 10px 0 0 2.5%;
+font-weight: 600;
+font-size: 25px;
+letter-spacing: 0.5px;
+}
+.carousel{
+  max-width: 1600px;
+  margin: auto;
+  padding: 0 30px;
+}
+.carousel .card{
+  color: #fff;
+  margin: 20px 0;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  padding: 2.5% 4%;
+  box-sizing: border-box;
+}
+.card h2{
+  font-size: 2rem;
+  letter-spacing: 0.7px;
+}
+.card span{
+  padding: 1px 3px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.card a{
+  text-decoration: none;
+}
+.card p:hover{
+  text-decoration: underline;
+  color: rgb(0, 102, 255);
+}
+.card p{
+  margin-top: 2%;
+  font-weight: 600;
+}
+.card-1 span, .card-1 p{
+  color:lightgoldenrodyellow;
+}
+.card-2 span, .card-2 p{
+  color: palegoldenrod;
+}
+.card-3 span, .card-3 p{
+  color: antiquewhite;
+}
+.card-4 span, .card-4 p{
+  color: antiquewhite;
+}
+.carousel .card-1{
+  background: #39B293;
+}
+.carousel .card-2{
+  background: darkturquoise;
+}
+.carousel .card-3{
+  background: cadetblue;
+}
+.carousel .card-4{
+  background: darkgray;
+}
+.owl-dots{
+  text-align: center;
+  margin-top: 40px;
+}
+.owl-dot{
+  height: 15px;
+  width: 45px;
+  margin: 0 5px;
+  outline: none;
+  border-radius: 14px;
+  border: 2px solid #0072bc!important;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+.owl-dot.active,
+.owl-dot:hover{
+  background: #0072bc!important;
+}

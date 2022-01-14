@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/slider.css">
+  <link rel="stylesheet" href="/static/studentprofile.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/cms.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <title>Student Profile</title>
+
+</head>
+
+<body>
+  <nav>
+    <div class="nav-link">
+      <i class="fas fa-graduation-cap"></i>
+      <h1>Eduford</h1>
+      <label>Important links</label>
+      <label>Notice Board</label>
+      <label>Virtual Lab</label>
+      <label>EXAM & Library</label>
+    </div>
+    <div class="login">
+      <label>{{ trow.1 }}</label>
+      <img src="/static/{{ trow.8 }}" class="user-img">
+      <div class="drropdown">
+        <i id="drropdown" class="fas fa-sort-down"></i>
+        <div class="dropdown-content">
+          <a href="/teacherprofile"><i class="fas fa-user"></i>Profile</a>
+          <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="material">
+      <div class="side-nav">
+        <div class="photu1">
+          <img src="/static/{{ trow.8 }}" class="photu3">
+          <img src="/static/user2.jpg" class="photu2">
+        </div>
+        <div class="details">
+          <p>{{ trow.1 }}</p>
+          <p>{{ trow.10 }}</p>
+        </div>
+      </div>
+
+    <div class="course-container">
+      <div class="form">
+        <div class="form-container">
+          <form action="/updateteacherprofile">
+            <input type="hidden" name="tid" value="{{ trow.0 }}">
+            <h1>Edit Profile</h1>
+            <div class="field gap">
+                    <p class="p">Username</p>
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input" name="teachername" type="text" value="{{ trow.1 }}" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                        </span>
+                    </p>
+            </div>
+            <div class="field gap">
+                     <p class="p">Email address</p>
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input" name="email" type="text" value="{{ trow.4 }}" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+                    </p>
+            </div>
+              <div style="display:flex;">
+                <div class="drpdown" style="flex-basis:100%;">
+                  <div class="field">
+                     <p class="p">Date of birth</p>
+                    <p class="control has-icons-left has-icons-right">
+                      <input class="input" name="dob" type="date" value="{{ trow.2 }}"  required>
+                    </p>
+                  </div>
+                </div>
+                <div  style="flex-basis:100%;">
+                  <div class="field">
+                  <p class="p">Admission year</p>
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" name="admissionyear" type="text" value="{{ trow.3 }}" readonly required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-calendar"></i>
+                    </span>
+                </p>
+            </div>
+                </div>
+            </div>
+            <div class="field gap">
+                     <p class="p">Address</p>
+                    <p class="control has-icons-left has-icons-right">
+                        <input class="input" name="address" type="text" value="{{ trow.5 }}" required>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-address-card"></i>
+                        </span>
+                    </p>
+            </div>
+            <button class="btn" name="btn" value="Edit" type="submit">Update Profile</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $(".carousel").owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: false,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 2,
+          nav: false
+        },
+        1000: {
+          items: 4,
+          nav: false
+        }
+      }
+    });
+
+  </script>
+</body>
+
+</html>

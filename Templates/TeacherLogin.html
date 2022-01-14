@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <title>Teacher Login</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            background-color: #f7f1e3;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .row {
+            display: flex;
+            width: 100%;
+            margin: auto;
+            padding-top: 10%;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+
+        .col-1 {
+            flex-basis: 45%;
+            height: 324px;
+        }
+
+        .image {
+            background-image: url("https://source.unsplash.com/1600x900/?study,books");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+        }
+
+        .col-2 {
+            flex-basis: 45%;
+            border-radius: 10px;
+            background-color: white;
+            padding: 2% 0;
+        }
+
+        h4 {
+            font-size: 28px;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        h6 {
+            margin-bottom: 5px;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+            color: #808080c7;
+        }
+
+        input {
+            width: 68%;
+            padding: 8px;
+            background-color: #ffcccc70;
+            border: 2px solid #80808057;
+            border-radius: 3px;
+        }
+
+        input:hover {
+            background-color: transparent;
+        }
+
+        ::placeholder {
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+
+        .password {
+            margin: 2% 0 2% 28%;
+            position: relative;
+        }
+
+        .icon {
+            position: absolute;
+            right: 31%;
+            top: 59%;
+            font-size: 12px;
+            color: gray;
+            cursor: pointer;
+            display: none;
+        }
+
+        #password:valid~.icon {
+            display: block;
+        }
+
+        .btn {
+            margin: 3% 0 2% 45%;
+        }
+
+        button {
+            font-size: 12px;
+            font-weight: bolder;
+            background: #00cec9;
+            color: white;
+            padding: 7px 30px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .msg{
+          text-align: center;
+          margin: 2% 0 0 5%;
+          font-size: 15px;
+          font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-1 image"></div>
+            <div class="col-2">
+                <form action="/checkteacher" method="post">{% csrf_token %}
+                    <h4>Teacher Login</h4>
+                    <div style="margin:6% 0 0 28%;">
+                        <h6>Teacher Id</h6>
+                        <input type="text" name="teacherid" placeholder="Teacher Id" required>
+                    </div>
+                    <div class="btn">
+                        <button type="submit">LOGIN</button>
+                    </div>
+                    <div class="msg">{{ msg }}</div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPassword(){
+            const p = document.getElementById("password")
+            const i = document.getElementById("icon")
+            if (p.type == "password") {
+                i.src = "/static/openeye.png"
+                p.type="text"
+            }
+            else if (p.type == "text") {
+                i.src = "/static/closeeye.jpg"
+                p.type="password"
+            }
+        }
+    </script>
+</body>
+
+</html>

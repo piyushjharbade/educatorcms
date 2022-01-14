@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/student.css">
+  <link rel="stylesheet" href="/static/slider.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <title>Lectures</title>
+      <style>
+        .t-info{
+  background: #80808026;
+  width: 98%;
+  margin: auto;
+  margin-top: 2%;
+  padding: 20px;
+  border-radius: 5px;
+  border:1px solid gray;
+}
+.t-info :first-child{
+  font-size: 40px
+}
+.t-info :last-child{
+  margin-top: 5px;
+  font-size: 17px;
+}
+.t-info a{
+  text-decoration: none;
+}
+.t-info span{
+  color: blue;
+}
+.t-info span:hover{
+  text-decoration: underline;
+  color: #1e3799;
+}
+.container{
+  margin-top:2%;
+  }
+  .course-container p:first-child{
+  margin-left: 15px;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+}
+.fa-folder-open{
+  font-size:20px ;
+  color: cornflowerblue;
+}
+.pdf{
+  margin-left: 27px;
+  color: gray;
+  font-size:15px;
+}
+.pdf a{
+  color: blue;
+  text-decoration: none;
+}
+.pdf a:hover{
+  color: darkblue;
+  text-decoration: underline;
+}
+.pdf span{
+  margin-left: 10px;
+}
+    </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-link">
+      <i class="fas fa-graduation-cap cap1"></i>
+      <h1>Eduford</h1>
+      <label>Important links</label>
+      <label>Notice Board</label>
+      <label>Virtual Lab</label>
+      <label>EXAM & Library</label>
+    </div>
+    <div class="login">
+      <label>{{ strow.1 }}</label>
+      <img src="/static/{{ strow.8 }}" class="user-img">
+      <div class="drropdown">
+        <i id="drropdown" class="fas fa-sort-down"></i>
+        <div class="dropdown-content">
+             <a href="/studentprofile?sid={{ strow.0 }}"><i class="fas fa-user"></i>Profile</a>
+          <a href="/studentlogin"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="t-info">
+      <p>Prof. {{ trow.1 }}</p>
+      <p><a href="/checkstudent?studentid={{ strow.0 }}"><span>Dashboard</span></a> / My course / {{ srow.3 }} / Lectures </p>
+  </div>
+
+  <div class="container">
+    <div class="side-nav">
+      <label>Navigation</label>
+      <p class="nav-p1"><i class="fas fa-angle-down"></i>Dashboard</p>
+      <div class="side-nav-items">
+        <a href="#"><p class="nav-p2"><i class="fas fa-home"></i>Site Home</p></a>
+        <p class="nav-p3"><span>></span>Site Page</p>
+        <p class="nav-p3"><span>></span>My Courses</p>
+        {% for i in prow %}
+         {% ifequal i.1 strow.0 %}
+           <a href=""><p class="nav-p4"><i class="fas fa-graduation-cap cap2"></i>Prof. {{ i.4 }}</p></a>
+         {% endifequal %}
+        {% endfor %}
+
+      </div>
+    </div>
+    <div class="course-container">
+      <p>Lectures</p>
+      <div>
+        <p><i class="fas fa-folder-open"></i></p>
+        {% for row in smrow %}
+         {% ifequal row.1 srow.2 %}
+          <p class="pdf">|-<a href="/static/lectures/{{ row.3 }}"><img src="/static/l1.png" width="12" height="12"><span>{{ row.3 }}</span></a></p>
+         {% endifequal %}
+        {% endfor %}
+      </div>
+      <a  href="/studentcoursematerial?subid={{ srow.2 }}&tid={{ trow.0 }}&sid={{ strow.0 }}" class="link1"><i class="fas fa-angle-double-left"></i> Course Material</a>
+      <a href="#" class="link2"> Assignment & Quiz <i class="fas fa-angle-double-right"></i></a>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(".carousel").owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: false,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 2,
+          nav: false
+        },
+        1000: {
+          items: 2,
+          nav: false
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

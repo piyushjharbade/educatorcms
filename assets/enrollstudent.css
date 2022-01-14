@@ -1,0 +1,319 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+nav{
+    display: flex;
+    padding: 10px;
+    background:#2f3640;
+    align-items: center;
+  }
+  .fa-graduation-cap{
+    color:red;
+    font-size: 25px;
+  }
+  nav h1{
+    color: white;
+  font-weight: 500;
+  margin-left: 5px;
+  }
+  nav label{
+    color: white;
+    margin: 0 0 0 30px;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  nav label:hover{
+    color: #95a5a6;
+  }
+  .nav-link{
+    flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  }
+  .login{
+    display: flex;
+    justify-content: right;
+    margin-left: auto;
+    align-items: center;
+    flex-basis: 24%;
+  }
+  .fa-sort-down{
+    color:white;
+    font-size: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .user-img{
+    width: 11%;
+    border-radius: 50%;
+    margin: 0 10px;
+  }
+  .drropdown{
+    display: inline-block;
+    position: relative;
+    padding:5px;
+  }
+  .dropdown-content{
+    display: none;
+    position:absolute;
+    background:white;
+    right: 0;
+    z-index: 5;
+    color:black;
+    padding:10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    margin-top:5px;
+    margin-right: 5px;
+    min-width: 130px;
+
+  }
+  .dropdown-content a{
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    display: block;
+
+  }
+  .dropdown-content a:hover {
+     background-color: #f1f1f1;
+  }
+  .drropdown:hover .dropdown-content{
+     display:block;
+  }
+
+  .fa-user{
+    margin-right: 12%
+  }
+  .fa-sign-out-alt{
+    margin-right: 12%;
+  }
+
+.sub-intro{
+    background-image:linear-gradient(rgba(4,9,30,0.49),rgba(4,9,30,0.49)), url("DS.jpg");
+    background-size: cover;
+    width: 98%;
+    margin: auto;
+    margin-top: 2%;
+    padding:2% 0;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+.sub-intro h1{
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.news{
+  background: white;
+  width: 98%;
+  margin: auto;
+  margin-top: 5%;
+  padding-bottom: 20px;
+  border-radius: 5px;
+}
+
+.material{
+    display: flex;
+    width: 98%;
+    margin: auto;
+    margin-top:3%;
+    justify-content: space-between;
+    margin-bottom: 2%;
+}
+
+  .side-nav{
+    border-radius: 7px;
+    width:60%;
+    border: 1px solid gray;
+
+}
+.side-nav h1{
+            margin-top: 9px;
+            font-size: 22px;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+}
+.pdf{
+  margin:13px;
+  padding: 9px 15px;
+  background-color: #fff3f3;
+  border-radius:5px;
+  transition: 0.5s;
+  position:relative;
+}
+.pdf:hover{
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+.pdf img{
+  margin-right: 3px;
+}
+.pdf a{
+  font-size: 17px;
+  font-weight: 500;
+  color:black;
+}
+.pdf span a{
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 12px;
+  margin-top:5px;
+  font-size:16px;
+}
+.pdf a:hover{
+  color:darkblue;
+  text-decoration: underline;
+}
+.pdf p:last-child{
+  color:gray;
+  font-size: 15px;
+  margin-top:2px;
+}
+.lecture{
+  margin:13px;
+  padding: 9px 15px;
+  background-color: #fff3f3;
+  border-radius:5px;
+  transition: 0.5s;
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.lecture:hover{
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+.lecture a{
+  font-size: 17px;
+  font-weight: 500;
+  color:black;
+}
+.lecture span a{
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-right: 12px;
+  margin-top:5px;
+  font-size:16px;
+}
+.lecture a:hover{
+  color:darkblue;
+  text-decoration: underline;
+}
+.lecture p:last-child{
+  color:gray;
+  font-size: 15px;
+  margin-top:2px;
+}
+.player{
+  font-size: 45px;
+  color: gray;
+  margin-right: 15px;
+  cursor: pointer;
+}
+.course-container {
+    width: 39%;
+    border: 1px solid gray;
+    border-radius: 5px;
+    max-height:324px;
+    background-color: #fff3f3;
+
+  }
+
+
+        .course {
+            margin: auto;
+            height: auto;
+            border-radius: 10px;
+            position: relative;
+            margin-top:9px;
+        }
+
+        .h1 {
+            font-size: 22px;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .drpdown {
+            padding: 15px 40px;
+            padding-top: 0;
+
+        }
+        .gap{
+           margin-top:2%;
+        }
+        select {
+            width: 100%;
+            height: 39px;
+           background: #dfe4ea6e;
+            border:0;
+        }
+select:hover{
+  border:2px solid black;
+  border-radius: 4px;
+}
+input{
+  background: #fff;
+}
+
+        .file-label {
+            padding: 0 20px;
+        }
+        .field {
+            padding: 0px 40px;
+            padding-bottom: 0px;
+            flex-basis:100%;
+        }
+       .photos {
+            display: flex;
+            justify-content: start;
+            margin-left: 2.1%
+       }
+        .submit {
+            text-align: center;
+            margin-top: 4%;
+        }
+
+        .button {
+            width: 26%;
+            margin: 0 10%;
+        }
+
+        .msg {
+            text-align: center;
+            font-size: 17px;
+            margin: 10px 0px;
+            padding: 10px;
+            font-weight: 600;
+        }
+
+        .i{
+          font-size:14px;
+          color:blue;
+        }
+        .table{
+           width:90%;
+           margin:0 5%;
+        }
+        .edit-student{
+ color: white;
+background: #4a83ec;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.edit-student:hover{
+  color:white;
+  text-decoration: none;
+}

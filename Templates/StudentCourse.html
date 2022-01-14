@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/slider.css">
+  <link rel="stylesheet" href="/static/teachercourse.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <title>Student Course</title>
+    <style>
+        .t-info{
+  background: #80808026;
+  width: 98%;
+  margin: auto;
+  margin-top: 2%;
+  padding: 20px;
+  border-radius: 5px;
+  border:1px solid gray;
+}
+.t-info :first-child{
+  font-size: 40px
+}
+.t-info :last-child{
+  margin-top: 5px;
+  font-size: 17px;
+}
+.t-info a{
+  text-decoration: none;
+}
+.t-info span{
+  color: blue;
+}
+.t-info span:hover{
+  text-decoration: underline;
+  color: #1e3799;
+}
+.container{
+  margin-top:2%;
+  }
+    </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-link">
+      <i class="fas fa-graduation-cap"></i>
+      <h1>Eduford</h1>
+      <label>Important links</label>
+      <label>Notice Board</label>
+      <label>Virtual Lab</label>
+      <label>EXAM & Library</label>
+    </div>
+    <div class="login">
+      <label>{{ strow.1 }}</label>
+      <img src="/static/{{ strow.8 }}" class="user-img">
+      <div class="drropdown2">
+        <i id="drropdown2" class="fas fa-sort-down"></i>
+        <div class="dropdown2-content">
+             <a href="/studentprofile?sid={{ strow.0 }}"><i class="fas fa-user"></i>Profile</a>
+          <a href="/studentlogin"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="t-info">
+      <p>Prof. {{ trow.1 }}</p>
+      <p><a href="/checkstudent?studentid={{ strow.0 }}"><span>Dashboard</span></a> / My course </p>
+  </div>
+
+
+  <div class="container">
+    <div class="course-container">
+      <p style="margin-left: 35px; font-size: 25px; font-weight: 500; letter-spacing: 0.8px;">{{ srow.3 }}</p>
+      <div class="courses">
+        <a href="/studentcoursematerial?subid={{ srow.2 }}&tid={{ trow.0 }}&sid={{ strow.0 }}"  class="items c1">
+          <div>
+          <h1>COURSE MATERIAL</h1>
+        </div></a>
+        <a href="/studentlecture?subid={{ srow.2 }}&tid={{ trow.0 }}&sid={{ strow.0 }}" class="items c2">
+          <div>
+          <h1>LECTURES</h1>
+        </div></a>
+        <a href="/assignmentquiz" class="items c3"><div >
+          <h1>ASSIGNMENT & QUIZ</h1>
+        </div></a>
+      </div>
+      <div class="courses">
+        <a href="/subjectteacherdata2?subid={{ srow.2 }}&tid={{ trow.0 }}"  class="items c4"><div>
+          <h1>MARKS</h1>
+        </div></a>
+        <a href="/performanceanalysis"  class="items c5"><div>
+          <h1>PERFORMANCE ANALYSIS</h1>
+        </div></a>
+          <a href="/subjectteacherdata?subid={{ srow.2 }}&tid={{ trow.0 }}"  class="items c6"><div>
+          <h1>ENROLL STUDENT</h1>
+        </div></a>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    $(".carousel").owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: false,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 2,
+          nav: false
+        },
+        1000: {
+          items: 4,
+          nav: false
+        }
+      }
+    });
+
+  </script>
+</body>
+
+</html>

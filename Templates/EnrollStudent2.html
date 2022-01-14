@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/slider.css">
+  <link rel="stylesheet" href="/static/enrollstudent.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/cms.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <title>Student Enrollment</title>
+    <style>
+        .table,.side-nav{
+          background-color: #fff3f3;
+          }
+        select{
+          background-color: #fff;
+          }
+    </style>
+</head>
+
+<body>
+  <nav>
+    <div class="nav-link">
+      <i class="fas fa-graduation-cap"></i>
+      <h1>Eduford</h1>
+      <label>Important links</label>
+      <label>Notice Board</label>
+      <label>Virtual Lab</label>
+      <label>EXAM & Library</label>
+    </div>
+    <div class="login">
+      <label>{{ trow.1 }}</label>
+      <img src="/static/{{ trow.4 }}" class="user-img">
+      <div class="drropdown">
+        <i id="drropdown" class="fas fa-sort-down"></i>
+        <div class="dropdown-content">
+          <a href="/teacherprofile?tid={{ trow.0 }}"><i class="fas fa-user"></i>Profile</a>
+          <a href="/teacherlogin"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="sub-intro">
+      <h1>{{ srow.3 }}</h1>
+  </div>
+
+  <div class="material">
+      <div class="side-nav">
+          <div class="form">
+      <div>
+        <div class="course">
+            <h1 class="h1">STUDENT ENROLLMENT LIST</h1>
+          <div style="padding: 13px;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Student Id-Name</th>
+                            <th>Update</th>
+                        </tr>
+                    </thead>
+                    {% for row in rows %}
+                        <tr>
+                            <td>{{ row.1 }}-{{ row.4 }}</td>
+                            <td >
+                                <div>
+                                    <span>
+                                        <a href="/editdeletestudentenroll?en={{ row.0 }}" class="edit-student">Remove</a>
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+      </div>
+</div>
+      </div>
+
+    <div class="course-container">
+          <form action="/submitstudentenroll">
+        <input type="hidden" name="subid" value="{{ srow.2 }}">
+        <input type="hidden" name="tid" value="{{ trow.0}}">
+        <div>
+            <div class="course">
+                <h1 class="h1">STUDENT ENROLLMENT</h1>
+                <div class="drpdown gap">
+                    <select name="studentid" id="stuid">
+                        <option>- Select Student -</option>
+                    </select>
+                </div>
+<!--                <div style="display:flex;">-->
+<!--                    <div class="drpdown" style="flex-basis:100%;">-->
+<!--                        <select name="subjectid" id="subjectid">-->
+<!--                        <option>- Select Subject -</option>-->
+<!--                    </select>-->
+<!--                    </div>-->
+<!--                    <div class="drpdown" style="flex-basis:100%;">-->
+<!--                   <select name="teacherid" id="teacherid">-->
+<!--                        <option>- Select Teacher -</option>-->
+<!--                    </select>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="submit">
+                    <button type="submit" class="button is-info">Submit</button>
+                    <button type="reset" class="button is-info">Reset</button>
+                </div>
+                <div class="msg">
+                    {% if status %}
+                    <div style="color:green;">
+                        Record Submitted Successfully....
+                    </div>
+                    {% elif status %}
+                    <div style="color:red;">Fail to submit record....</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+  </div>
+
+
+  <script>
+    $(".carousel").owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: false,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 2,
+          nav: false
+        },
+        1000: {
+          items: 4,
+          nav: false
+        }
+      }
+    });
+
+  </script>
+  <!-- <script>
+        $(document).ready(function(){
+          $('.drropdown-content').hide();
+          $('#drropdown').click()
+          {
+            $('.dropdown-content').show();
+          }
+        }
+        );
+  </script> -->
+</body>
+
+</html>

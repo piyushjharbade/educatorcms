@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/static/slider.css">
+  <link rel="stylesheet" href="/static/enrollstudent.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/cms.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <title>Upload Lectures</title>
+    <style>
+        input{
+         width: 100%;
+         border: 1px solid black;
+         padding: 10px 15px;
+         border-radius: 3px;
+        }
+    </style>
+
+</head>
+
+<body onload="setValues()">
+  <nav>
+    <div class="nav-link">
+      <i class="fas fa-graduation-cap"></i>
+      <h1>Eduford</h1>
+      <label>Important links</label>
+      <label>Notice Board</label>
+      <label>Virtual Lab</label>
+      <label>EXAM & Library</label>
+    </div>
+    <div class="login">
+      <label>{{ trow.1 }}</label>
+      <img src="/static/{{ trow.4 }}" class="user-img">
+      <div class="drropdown">
+        <i id="drropdown" class="fas fa-sort-down"></i>
+        <div class="dropdown-content">
+          <a href="/teacherprofile?tid={{ trow.0 }}"><i class="fas fa-user"></i>Profile</a>
+          <a href="/teacherlogin"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="sub-intro">
+      <h1>{{ srow.3 }}</h1>
+  </div>
+
+  <div class="material">
+      <div class="side-nav">
+            <h1>LECTURES</h1>
+          {% for row in rows %}
+           <div class="lecture">
+               <div class="player"><i class="fas fa-play-circle"></i></div>
+               <div>
+                 <a href="/static/lectures/{{ row.3 }}"> {{ row.3 }}</a><span><a href="/deletelecture?lno={{ row.0 }}&filename={{ row.3 }}&tid={{ trow.0 }}&subid={{ srow.2 }}"><i class="fas fa-times-circle"></i></a></span>
+                 <p>{{ row.4 }} | {{ row.5 }} | {{ row.6 }}</p>
+               </div>
+           </div>
+          {% endfor %}
+
+      </div>
+
+    <div class="course-container">
+          <form action="/uploadlecture" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <input type="hidden" name="subid" value="{{ srow.2 }}">
+        <input type="hidden" name="tid" value="{{ trow.0}}">
+        <div>
+            <div class="course">
+                <h1 class="h1">UPLOAD LECTURE</h1>
+                <div class="drpdown gap">
+                    <input type="file" name="lecture">
+                </div>
+                <div style="display:flex;" class="drpdown">
+                    <div  style="flex-basis:100%; margin-right:14px;">
+                    <input type="time" id="time" name="time" placeholder="Time" >
+                </div>
+                <div  style="flex-basis:100%; margin-right:14px;">
+                    <input type="text" id="day" name="day" placeholder="Day" >
+                </div>
+                <div  style="flex-basis:100%;">
+                    <input  name="date" id="date" type="text" required>
+                </div>
+            </div>
+                <div class="submit">
+                    <button type="submit" class="button is-info">Submit</button>
+                    <button type="reset" class="button is-info">Reset</button>
+                </div>
+                <div class="msg">
+                    {% if status %}
+                    <div style="color:green;">
+                        Record Submitted Successfully....
+                    </div>
+                    {% elif status %}
+                    <div style="color:red;">Fail to submit record....</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
+  </div>
+
+
+  <script>
+
+    $(".carousel").owlCarousel({
+      margin: 20,
+      loop: true,
+      autoplay: false,
+      autoplayTimeout: 2000,
+      autoplayHoverPause: true,
+      responsive: {
+        0: {
+          items: 1,
+          nav: false
+        },
+        600: {
+          items: 2,
+          nav: false
+        },
+        1000: {
+          items: 4,
+          nav: false
+        }
+      }
+    });
+
+function setValues(){
+ const d=new Date();
+ var h=d.getHours();
+ var m=d.getMinutes();
+ var day=d.getDay();
+ const days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+ var din=document.getElementById('day').value=days[day-1];
+ const time=String(h)+':'+String(m);
+ var t=document.getElementById('time').value=time;
+ var tareek=d.getDate()
+ var month=d.getMonth()
+ var year=d.getFullYear()
+ var fulldate=String(tareek)+'-'+String(month)+'-'+String(year);
+ var y=document.getElementById('date').value=fulldate;
+ }
+  </script>
+</body>
+
+</html>

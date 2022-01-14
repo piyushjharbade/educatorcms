@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login</title>
+    <link rel="stylesheet" href="/static/collage.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap"
+        rel="stylesheet">
+    <script defer src="http://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+    <style>
+    .container1 {
+    background-image:linear-gradient(rgba(4,9,30,0.45),rgba(4,9,30,0.34)),url("/static/clgimg/banner.png");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+
+}
+        .text2{
+            background-image:linear-gradient(rgba(4,9,30,0.6),rgba(4,9,30,0.64));
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           width:35%;
+           transform: translate(-50%, -50%);
+           color: white;
+           box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+           padding:15px 20px;
+        }
+        .text2 h2{
+   font-size: 30px;
+   text-align: center;
+   letter-spacing: 0.5px;
+}
+.input{
+   display: block;
+   margin:3% 5%;
+   width: 87%;
+   padding: 5px;
+   background: transparent;
+   color: white;
+   border: none;
+   border-bottom: 2px solid white;
+   outline:none;
+}
+::placeholder{
+ color:#fff;
+ opacity:1;
+ font-size:15px;
+ }
+.gap{
+    margin-top:25px;
+}
+button{
+   margin:2% 5%;
+   padding:5px 15px;
+   background: transparent;
+   color: white;
+   border:1px solid white;
+   letter-spacing: 0.5px;
+   cursor:pointer;
+}
+button:hover{
+   background: #f44336;
+   border-color:#f44336;
+}
+.msg{
+   margin: 1% 5%;
+   color:red;
+}
+.show{
+   display:none;
+   position: absolute;
+   right: 0;
+   top: 0;
+   margin-top:24.3%;
+   margin-right: 10%;
+   color:#fff;
+   background: gray;
+   border-radius: 5px;
+   padding:0px 5px;
+   font-size: 10px;
+   letter-spacing: 1px;
+   cursor: pointer;
+}
+#password:valid~.show {
+   display: block;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <div class="nav">
+            <img src="/static/clgimg/logo.png">
+            <div class="nava" id="navlinks">
+                <a><i class="fa fa-times i" onclick="hideMenue()"></i></a>
+                <a href="/collageinterface">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/collagecourse">COURSE</a>
+                <a href="/blog">BLOG</a>
+                <a href="/contact">CONTACT</a>
+            </div>
+            <i class="fa fa-bars i" onclick="showMenue()"></i>
+        </div>
+        <div class="text2">
+            <form action="/checkstudent" method="post">{% csrf_token %}
+                <h2>Student Login</h2>
+                <input type="text" name="studentid" placeholder="Student Id" class="input gap">
+                <input type="password" name="password" id="password" placeholder="Password" class="input ">
+                <p class="show" id="icon" onclick="showPassword()">SHOW</p>
+                <button>Login</button>
+                <div class="msg">{{ msg }}</div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showPassword(){
+            const p = document.getElementById("password")
+            const i = document.getElementById("icon")
+            if (p.type == "password") {
+                i.innerHTML="HIDE"
+                p.type="text"
+            }
+            else if (p.type == "text") {
+                i.innerHTML="SHOW"
+                p.type="password"
+            }
+        }
+    </script>
+
+</body>
